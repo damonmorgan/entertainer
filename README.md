@@ -6,10 +6,10 @@ Installation
 
 * Configure .env with your local parameters.
 ```shell
-cat <<EOT >> /Users/$USER/entertainer/.env
-CONTAINERS_CONFIG_PATH=/Users/$USER/entertainer
+cat <<EOT >> /home/$USER/entertainer/.env
+CONTAINERS_CONFIG_PATH=/home/$USER/entertainer
 TV_DESTINATION_PATH=/media/storage/entertainment/
-PROCESSING_PATH=/Users/$USER/entertainer
+PROCESSING_PATH=/home/$USER/entertainer
 PGID=$(id -g $USER)
 PUID=$UID
 TZ="Europe/London"
@@ -18,6 +18,6 @@ EOT
 
 * Launch
 ```
-cd /Users/$USER/entertainer/
+cd /home/$USER/entertainer/
 docker-compose up -d
 ```
