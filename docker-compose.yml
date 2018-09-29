@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+
+# TV
+  sonarr:
+    container_name: sonar
+    image: linuxserver/sonarr
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/sonarr:/config
+      - ${TV_DESTINATION_PATH}/tv:/tv
+      - ${PROCESSING_PATH}/downloads:/downloads
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+
+# Torrent Proxy
+  jackett:
+    container_name: jackett
+    image: linuxserver/jackett
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/jackett:/config
+      - ${PROCESSING_PATH}/jackett-downloads:/downloads
+    ports:
+      - "9117:9117"
+    restart: unless-stopped
+
+# Torrent Downloader
+  transmission:
+    container_name: transmission
+    image: linuxserver/transmission
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/transmission:/config
+      - ${PROCESSING_PATH}/downloads:/downloads
+      - ${PROCESSING_PATH}/jackett-downloads:/watch
+    ports:
+      - "9091:9091"
+      - "51413:51413"
+      - "51413:51413/udp"
+    restart: unless-stopped
+
+# Tor proxy so jackett can bypass ISP filters (NOT for anonymity - use something like Tails for that)
+  torproxy:
+    container_name: torproxy
+    image: rdsubhas/tor-privoxy-alpine
+    ports:
+      - "8118:8118"
+      - "9050:9050"
+    restart: unless-stopped
