@@ -8,7 +8,7 @@ services:
     image: linuxserver/sonarr
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/sonarr:/config
-      - ${TV_DESTINATION_PATH}/tv:/tv
+      - ${TV_DESTINATION_PATH}:/tv
       - ${PROCESSING_PATH}/downloads:/downloads
     ports:
       - "8989:8989"
