@@ -21,3 +21,8 @@ EOT
 cd /home/$USER/entertainer/
 docker-compose up -d
 ```
+
+TODO
+------------
+
+* There is an issue with docker compose interpolating integers so `PUID` and `PGID` end up as strings so for now they are hardcoded as the default ubuntu user id in the compose file.
