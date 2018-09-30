@@ -23,6 +23,19 @@ cd /home/$USER/entertainer/
 docker-compose up -d
 ```
 
+Updating
+------------
+
+```
+cd /home/$USER/entertainer/
+chmod 755 update
+```
+
+```
+cd /home/$USER/entertainer/
+./update
+```
+
 TODO
 ------------
 
