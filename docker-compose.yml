@@ -22,7 +22,7 @@ services:
     container_name: radarr
     image: linuxserver/radarr
     volumes:
-      - ${CONTAINERS_CONFIG_PATH}/sonarr:/config
+      - ${CONTAINERS_CONFIG_PATH}/radarr:/config
       - ${MOVIE_DESTINATION_PATH}:/movies
       - ${PROCESSING_PATH}/downloads:/downloads
     ports:
