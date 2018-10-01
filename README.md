@@ -4,13 +4,18 @@ Entertainer (The Entertainment Container)
 Installation
 ------------
 
-* Configure .env with your local parameters.
+Run all the following from inside the entertainer dir
 ```shell
-cat <<EOT >> /home/$USER/entertainer/.env
-CONTAINERS_CONFIG_PATH=/home/$USER/entertainer
+cd ~/entertainer/
+```
+
+* Configure .env with your local parameters.
+```
+cat <<EOT >> .env
+CONTAINERS_CONFIG_PATH=$(pwd)
 TV_DESTINATION_PATH=/media/storage/entertainment/tv
 MOVIE_DESTINATION_PATH=/media/storage/entertainment/movies
-PROCESSING_PATH=/home/$USER/entertainer
+PROCESSING_PATH=$(pwd)
 PGID=$(id -g $USER)
 PUID=$UID
 TZ="Europe/London"
@@ -18,21 +23,23 @@ EOT
 ```
 
 * Launch
-```
-cd /home/$USER/entertainer/
+```shell
 docker-compose up -d
 ```
 
 Updating
 ------------
 
+Run all the following from inside the entertainer dir
+```shell
+cd ~/entertainer/
 ```
-cd /home/$USER/entertainer/
+
+```shell
 chmod 755 update
 ```
 
-```
-cd /home/$USER/entertainer/
+```shell
 ./update
 ```
 
