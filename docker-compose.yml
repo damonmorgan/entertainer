@@ -2,6 +2,19 @@ version: "3.7"
 
 services:
 
+# HTPC Portal
+  heimdall:
+    container_name: heimdall
+    image: linuxserver/heimdall
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/heimdall:/config
+    ports:
+      - "80:80"
+    environment:
+      PGID: 1000
+      PUID: 1000
+    restart: unless-stopped
+
 # TV
   sonarr:
     container_name: sonarr
@@ -70,4 +83,13 @@ services:
     ports:
       - "8118:8118"
       - "9050:9050"
+    restart: unless-stopped
+
+# Auto update containers
+  watchtower:
+    container_name: watchtower
+    image: v2tec/watchtower
+    command: --cleanup --interval 86400
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
