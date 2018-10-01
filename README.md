@@ -30,15 +30,6 @@ docker-compose up -d
 Updating
 ------------
 
-Run all the following from inside the entertainer dir
-```shell
-cd ~/entertainer/
-```
-
-```shell
-chmod 755 update
-```
-
 ```shell
 ./update
 ```
