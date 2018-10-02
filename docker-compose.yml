@@ -22,7 +22,7 @@ services:
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/sonarr:/config
       - ${TV_DESTINATION_PATH}:/tv
-      - ${PROCESSING_PATH}/downloads:/downloads
+      - ${PROCESSING_PATH}/downloads/complete:/downloads
     ports:
       - "8989:8989"
     environment:
@@ -37,7 +37,7 @@ services:
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/radarr:/config
       - ${MOVIE_DESTINATION_PATH}:/movies
-      - ${PROCESSING_PATH}/downloads:/downloads
+      - ${PROCESSING_PATH}/downloads/complete:/downloads
     ports:
       - "7878:7878"
     environment:
