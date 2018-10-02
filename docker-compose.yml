@@ -45,6 +45,21 @@ services:
       PUID: 1000
     restart: unless-stopped
 
+# Movies (alternative)
+  couchpotato:
+    container_name: couchpotato
+    image: linuxserver/couchpotato
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/couchpotato:/config
+      - ${MOVIE_DESTINATION_PATH}:/movies
+      - ${PROCESSING_PATH}/downloads/complete:/downloads
+    ports:
+      - "5050:5050"
+    environment:
+      PGID: 1000
+      PUID: 1000
+    restart: unless-stopped
+
 # Torrent Proxy
   jackett:
     container_name: jackett
