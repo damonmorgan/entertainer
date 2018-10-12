@@ -108,3 +108,17 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
+
+# Backups
+  crashplan-pro:
+    container_name: crashplan
+    image: jlesage/crashplan-pro
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/crashplan:/config
+      - ${BACKUP_PATH}:/storage
+    ports:
+      - "5800:5800"
+    environment:
+      GROUP_ID: 1000
+      USER_ID: 1000
+    restart: unless-stopped

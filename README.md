@@ -16,6 +16,7 @@ CONTAINERS_CONFIG_PATH=$(pwd)
 TV_DESTINATION_PATH=/media/storage/entertainment/tv
 MOVIE_DESTINATION_PATH=/media/storage/entertainment/movies
 PROCESSING_PATH=$(pwd)
+BACKUP_PATH=/media/storage
 PGID=$(id -g $USER)
 PUID=$UID
 TZ="Europe/London"
