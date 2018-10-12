@@ -121,4 +121,5 @@ services:
     environment:
       GROUP_ID: 1000
       USER_ID: 1000
+      CRASHPLAN_SRV_MAX_MEM: 3072
     restart: unless-stopped
