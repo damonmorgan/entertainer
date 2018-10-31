@@ -52,7 +52,7 @@ services:
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/couchpotato:/config
       - ${MOVIE_DESTINATION_PATH}:/movies
-      - ${PROCESSING_PATH}/downloads/complete:/downloads
+      - ${PROCESSING_PATH}/downloads/movies:/downloads
     ports:
       - "5050:5050"
     environment:
