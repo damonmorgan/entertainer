@@ -31,34 +31,34 @@ services:
     restart: unless-stopped
 
 # Movies
-  #radarr:
-    #container_name: radarr
-    #image: linuxserver/radarr
-    #volumes:
-      #- ${CONTAINERS_CONFIG_PATH}/radarr:/config
-      #- ${MOVIE_DESTINATION_PATH}:/movies
-      #- ${PROCESSING_PATH}/downloads:/downloads
-    #ports:
-      #- "7878:7878"
-    #environment:
-      #PGID: 1000
-      #PUID: 1000
-    #restart: unless-stopped
-
-# Movies (alternative)
-  couchpotato:
-    container_name: couchpotato
-    image: linuxserver/couchpotato
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr
     volumes:
-      - ${CONTAINERS_CONFIG_PATH}/couchpotato:/config
+      - ${CONTAINERS_CONFIG_PATH}/radarr:/config
       - ${MOVIE_DESTINATION_PATH}:/movies
-      - ${PROCESSING_PATH}/downloads/movies:/downloads
+      - ${PROCESSING_PATH}/downloads:/downloads
     ports:
-      - "5050:5050"
+      - "7878:7878"
     environment:
       PGID: 1000
       PUID: 1000
     restart: unless-stopped
+
+# Movies (alternative)
+  #couchpotato:
+    #container_name: couchpotato
+    #image: linuxserver/couchpotato
+    #volumes:
+      #- ${CONTAINERS_CONFIG_PATH}/couchpotato:/config
+      #- ${MOVIE_DESTINATION_PATH}:/movies
+      #- ${PROCESSING_PATH}/downloads/movies:/downloads
+    #ports:
+      #- "5050:5050"
+    #environment:
+      #PGID: 1000
+      #PUID: 1000
+    #restart: unless-stopped
 
 # Torrent Proxy
   jackett:
