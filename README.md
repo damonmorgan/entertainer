@@ -23,6 +23,20 @@ TZ="Europe/London"
 EOT
 ```
 
+* My .env
+```
+cat <<EOT >> .env
+CONTAINERS_CONFIG_PATH=/media/wdred-alpha/entertainer-config
+TV_DESTINATION_PATH=/media/wdred-bravo/Entertainment/TV
+MOVIE_DESTINATION_PATH=/media/wdred-charlie/Entertainment/HD-Movies-Downloaded
+PROCESSING_PATH=/home/damon/entertainer
+BACKUP_PATH=/media
+PGID=1000
+PUID=1000
+TZ="Europe/London"
+EOT
+```
+
 * Launch
 ```shell
 docker-compose up -d
