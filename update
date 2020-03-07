@@ -1,5 +1,16 @@
 #!/bin/bash
 
+LATEST_VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
+echo $(docker-compose --version)
+echo $LATEST_VERSION
+if [[ -z $(docker-compose --version | grep $LATEST_VERSION) ]]; then
+  echo "upgrading docker-compose"
+
+  sudo rm /usr/local/bin/docker-compose
+  sudo curl -L "https://github.com/docker/compose/releases/download/${LATEST_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+fi
+
 docker-compose pull
 docker-compose up --remove-orphans -d
 docker system prune --force --all
