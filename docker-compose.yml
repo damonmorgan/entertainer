@@ -30,9 +30,14 @@ services:
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
+      - "443:443"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.http.routers.admin.rule=Host(`traefik.local`)"
+      - "traefik.http.routers.admin.entrypoints=web"
+      - "traefik.http.services.admin.loadbalancer.server.port=8080"
     restart: unless-stopped
 
 # HTPC Portal
