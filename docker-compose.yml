@@ -65,6 +65,8 @@ services:
       - ${CONTAINERS_CONFIG_PATH}/sonarr:/config
       - ${TV_DESTINATION_PATH}:/tv
       - ${PROCESSING_PATH}/downloads:/downloads
+    ports:
+      - "8989:8989"
     environment:
       PGID: 1000
       PUID: 1000
@@ -101,6 +103,7 @@ services:
       - ${PROCESSING_PATH}/downloads:/downloads
       - ${PROCESSING_PATH}/jackett-downloads:/watch
     ports:
+      - "9091:9091"
       - "51413:51413"
       - "51413:51413/udp"
     environment:
