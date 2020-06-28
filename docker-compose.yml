@@ -148,3 +148,27 @@ services:
       - "traefik.http.routers.crashplan.entrypoints=web"
       - "traefik.http.services.crashplan.loadbalancer.server.port=5800"
     restart: unless-stopped
+
+# Pihole
+  pihole:
+    container_name: pihole
+    image: pihole/pihole
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+      - '67:67/udp'
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/etc-pihole/:/etc/pihole/
+      - ${CONTAINERS_CONFIG_PATH}/etc-dnsmasqd/:/etc/dnsmasq.d/
+    environment:
+      DNS1: 1.1.1.3
+      DNS2: 1.0.0.3
+      VIRTUAL_HOST: pihole.local
+      TZ: 'Europe/London'
+      WEBPASSWORD: pihole
+    restart: unless-stopped
+    labels:
+       - "traefik.enable=true"
+       - "traefik.http.routers.pihole.rule=Host(`pihole.local`)"
+       - "traefik.http.routers.pihole.entrypoints=web"
+       - "traefik.http.services.pihole.loadbalancer.server.port=80"
