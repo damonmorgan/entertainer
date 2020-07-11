@@ -101,6 +101,7 @@ services:
       - ${PROCESSING_PATH}/downloads:/downloads
       - ${PROCESSING_PATH}/jackett-downloads:/watch
     ports:
+      - "9091:9091"
       - "51413:51413"
       - "51413:51413/udp"
     environment:
