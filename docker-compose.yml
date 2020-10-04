@@ -36,7 +36,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=Host(`traefik.local`)"
+      - "traefik.http.routers.admin.rule=Host(`traefik.local`, `traefik.lan`)"
       - "traefik.http.routers.admin.entrypoints=web"
       - "traefik.http.services.admin.loadbalancer.server.port=8080"
     restart: unless-stopped
@@ -52,7 +52,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.heimdall.rule=Host(`heimdall.local`)"
+      - "traefik.http.routers.heimdall.rule=Host(`heimdall.local`, `heimdall.lan`)"
       - "traefik.http.routers.heimdall.entrypoints=web"
       - "traefik.http.services.heimdall.loadbalancer.server.port=80"
     restart: unless-stopped
@@ -70,7 +70,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sonarr.rule=Host(`sonarr.local`)"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.local`, `sonarr.lan`)"
       - "traefik.http.routers.sonarr.entrypoints=web"
       - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
     restart: unless-stopped
@@ -87,7 +87,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.jackett.rule=Host(`jackett.local`)"
+      - "traefik.http.routers.jackett.rule=Host(`jackett.local`, `jackett.lan`)"
       - "traefik.http.routers.jackett.entrypoints=web"
       - "traefik.http.services.jackett.loadbalancer.server.port=9117"
     restart: unless-stopped
@@ -109,7 +109,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.transmission.rule=Host(`transmission.local`)"
+      - "traefik.http.routers.transmission.rule=Host(`transmission.local`, `transmission.lan`)"
       - "traefik.http.routers.transmission.entrypoints=web"
       - "traefik.http.services.transmission.loadbalancer.server.port=9091"
     restart: unless-stopped
@@ -145,7 +145,7 @@ services:
       CRASHPLAN_SRV_MAX_MEM: 3072M
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.crashplan.rule=Host(`crashplan.local`)"
+      - "traefik.http.routers.crashplan.rule=Host(`crashplan.local`, `crashplan.lan`)"
       - "traefik.http.routers.crashplan.entrypoints=web"
       - "traefik.http.services.crashplan.loadbalancer.server.port=5800"
     restart: unless-stopped
@@ -170,6 +170,6 @@ services:
     restart: unless-stopped
     labels:
        - "traefik.enable=true"
-       - "traefik.http.routers.pihole.rule=Host(`pihole.local`)"
+       - "traefik.http.routers.pihole.rule=Host(`pihole.local`, `pi.hole`)"
        - "traefik.http.routers.pihole.entrypoints=web"
        - "traefik.http.services.pihole.loadbalancer.server.port=80"
