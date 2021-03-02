@@ -92,6 +92,23 @@ services:
       - "traefik.http.services.jackett.loadbalancer.server.port=9117"
     restart: unless-stopped
 
+# proxy server to bypass Cloudflare protection for jackett
+  flaresolverr:
+    container_name: flaresolverr
+    image: flaresolverr/flaresolverr
+    environment:
+      LOG_LEVEL: info
+      LOG_HTML: false
+      CAPTCHA_SOLVER: none
+    ports:
+      - "8191:8191"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.flaresolverr.rule=Host(`flaresolverr.local`, `flaresolverr.lan`)"
+      - "traefik.http.routers.flaresolverr.entrypoints=web"
+      - "traefik.http.services.flaresolverr.loadbalancer.server.port=8191"
+    restart: unless-stopped
+
 # Torrent Downloader
   transmission:
     container_name: transmission
