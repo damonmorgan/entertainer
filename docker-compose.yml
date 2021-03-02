@@ -96,10 +96,6 @@ services:
   flaresolverr:
     container_name: flaresolverr
     image: flaresolverr/flaresolverr
-    environment:
-      LOG_LEVEL: info
-      LOG_HTML: false
-      CAPTCHA_SOLVER: none
     ports:
       - "8191:8191"
     labels:
