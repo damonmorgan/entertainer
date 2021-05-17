@@ -130,7 +130,7 @@ services:
 # Tor proxy so jackett can bypass ISP filters (NOT for anonymity - use something like Tails for that)
   torproxy:
     container_name: torproxy
-    image: rdsubhas/tor-privoxy-alpine
+    image: damonmorgan/tor-privoxy-alpine
     ports:
       - "8118:8118"
       - "9050:9050"
