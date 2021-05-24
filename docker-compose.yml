@@ -210,8 +210,6 @@ services:
   prometheus:
     container_name: prometheus
     image: prom/prometheus
-    volumes:
-      - ${CONTAINERS_CONFIG_PATH}/prometheus:/etc/prometheus
     ports:
       - "9090:9090"
     restart: unless-stopped
@@ -220,8 +218,6 @@ services:
   grafana:
     container_name: grafana
     image: grafana/grafana
-    volumes:
-      - ${CONTAINERS_CONFIG_PATH}/grafana:/etc/grafana
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=Host(`grafana.local`, `grafana.lan`)"
