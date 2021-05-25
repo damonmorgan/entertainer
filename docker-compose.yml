@@ -233,8 +233,8 @@ services:
     restart: unless-stopped
 
 # Wireguard Prometheus metrics
- prometheus-wireguard:
-   container_name: prometheus-wireguard
+  prometheus-wireguard:
+    container_name: prometheus-wireguard
     image: mindflavor/prometheus-wireguard-exporter
     network_mode: "host"
     cap_add:
