@@ -212,6 +212,11 @@ services:
     image: prom/prometheus
     ports:
       - "9090:9090"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.local`, `prometheus.lan`)"
+      - "traefik.http.routers.prometheus.entrypoints=web"
+      - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
     restart: unless-stopped
 
 # Grafana
