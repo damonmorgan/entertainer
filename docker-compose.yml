@@ -239,6 +239,8 @@ services:
     network_mode: "host"
     cap_add:
       - NET_ADMIN
+    ports:
+      - "9586:9586"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.wireguard.rule=Host(`wireguard.local`, `wireguard.lan`)"
