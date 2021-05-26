@@ -237,9 +237,9 @@ services:
     container_name: wireguard-prometheus
     image: mindflavor/prometheus-wireguard-exporter
     volumes:
-      - /etc/wireguard/wghub.conf:wghub.conf
+      - /etc/wireguard/wghub.conf:/usr/local/bin/wghub.conf
     command:
-      - "-n wghub.conf"
+      - "-n /usr/local/bin/wghub.conf"
     network_mode: "host"
     cap_add:
       - NET_ADMIN
