@@ -233,9 +233,13 @@ services:
     restart: unless-stopped
 
 # Wireguard Prometheus metrics
-  promwg:
-    container_name: promwg
+  wireguard-prometheus:
+    container_name: wireguard-prometheus
     image: mindflavor/prometheus-wireguard-exporter
+    volumes:
+      - /etc/wireguard/wghub.conf:wghub.conf
+    command:
+      - "-n wghub.conf"
     network_mode: "host"
     cap_add:
       - NET_ADMIN
