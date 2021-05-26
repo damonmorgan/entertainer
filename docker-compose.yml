@@ -239,7 +239,9 @@ services:
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/wireguard/wghub.conf:/usr/local/bin/wghub.conf
     command:
-      - "-n /usr/local/bin/wghub.conf"
+      - "-a"
+      - "-n=/usr/local/bin/wghub.conf"
+      - "-i=wghub"
     network_mode: "host"
     cap_add:
       - NET_ADMIN
