@@ -225,6 +225,8 @@ services:
   grafana:
     container_name: grafana
     image: grafana/grafana
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/grafana:/var/lib/grafana
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=Host(`grafana.local`, `grafana.lan`)"
