@@ -93,7 +93,7 @@ services:
     restart: unless-stopped
 
 # Torrent Proxy
-  jackett:
+  prowlarr:
     container_name: prowlarr
     image: linuxserver/prowlarr
     volumes:
