@@ -95,7 +95,7 @@ services:
 # Torrent Proxy
   prowlarr:
     container_name: prowlarr
-    image: linuxserver/prowlarr
+    image: lscr.io/linuxserver/prowlarr:develop
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/prowlarr:/config
     environment:
