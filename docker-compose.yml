@@ -92,6 +92,22 @@ services:
       - "traefik.http.services.jackett.loadbalancer.server.port=9117"
     restart: unless-stopped
 
+# Torrent Proxy
+  jackett:
+    container_name: prowlarr
+    image: linuxserver/prowlarr
+    volumes:
+      - ${CONTAINERS_CONFIG_PATH}/prowlarr:/config
+    environment:
+      PGID: 1000
+      PUID: 1000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.local`, `prowlarr.lan`)"
+      - "traefik.http.routers.prowlarr.entrypoints=web"
+      - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
+    restart: unless-stopped
+
 # proxy server to bypass Cloudflare protection for jackett
   flaresolverr:
     container_name: flaresolverr
