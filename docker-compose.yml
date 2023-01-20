@@ -76,21 +76,21 @@ services:
     restart: unless-stopped
 
 # Torrent Proxy
-  jackett:
-    container_name: jackett
-    image: linuxserver/jackett
-    volumes:
-      - ${CONTAINERS_CONFIG_PATH}/jackett:/config
-      - ${PROCESSING_PATH}/jackett-downloads:/downloads
-    environment:
-      PGID: 1000
-      PUID: 1000
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.jackett.rule=Host(`jackett.local`, `jackett.lan`)"
-      - "traefik.http.routers.jackett.entrypoints=web"
-      - "traefik.http.services.jackett.loadbalancer.server.port=9117"
-    restart: unless-stopped
+  #jackett:
+    #container_name: jackett
+    #image: linuxserver/jackett
+    #volumes:
+      #- ${CONTAINERS_CONFIG_PATH}/jackett:/config
+      #- ${PROCESSING_PATH}/jackett-downloads:/downloads
+    #environment:
+      #PGID: 1000
+      #PUID: 1000
+    #labels:
+      #- "traefik.enable=true"
+      #- "traefik.http.routers.jackett.rule=Host(`jackett.local`, `jackett.lan`)"
+      #- "traefik.http.routers.jackett.entrypoints=web"
+      #- "traefik.http.services.jackett.loadbalancer.server.port=9117"
+    #restart: unless-stopped
 
 # Torrent Proxy
   prowlarr:
@@ -109,17 +109,17 @@ services:
     restart: unless-stopped
 
 # proxy server to bypass Cloudflare protection for jackett
-  flaresolverr:
-    container_name: flaresolverr
-    image: flaresolverr/flaresolverr
-    ports:
-      - "8191:8191"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.flaresolverr.rule=Host(`flaresolverr.local`, `flaresolverr.lan`)"
-      - "traefik.http.routers.flaresolverr.entrypoints=web"
-      - "traefik.http.services.flaresolverr.loadbalancer.server.port=8191"
-    restart: unless-stopped
+  #flaresolverr:
+    #container_name: flaresolverr
+    #image: flaresolverr/flaresolverr
+    #ports:
+      #- "8191:8191"
+    #labels:
+      #- "traefik.enable=true"
+      #- "traefik.http.routers.flaresolverr.rule=Host(`flaresolverr.local`, `flaresolverr.lan`)"
+      #- "traefik.http.routers.flaresolverr.entrypoints=web"
+      #- "traefik.http.services.flaresolverr.loadbalancer.server.port=8191"
+    #restart: unless-stopped
 
 # Torrent Downloader
   transmission:
