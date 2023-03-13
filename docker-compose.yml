@@ -266,6 +266,7 @@ services:
       - "-s=false"
       - "-r=false"
       - "-l=0.0.0.0"
+      - "-d=true"
     network_mode: "host"
     cap_add:
       - NET_ADMIN
