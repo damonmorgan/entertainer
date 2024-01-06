@@ -90,7 +90,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr.rule=Host(`radarr.local`, `radarr.lan`)"
       - "traefik.http.routers.radarr.entrypoints=web"
-      - "traefik.http.services.radarr.loadbalancer.server.port=8989"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
     restart: unless-stopped
 
 # Torrent Proxy
