@@ -246,10 +246,10 @@ services:
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/wireguard/wghub.conf:/usr/local/bin/wghub.conf
     command:
-      - "-a=false"
+      - "-a=true"
       - "-n=/usr/local/bin/wghub.conf"
       - "-i=wghub"
-      - "-v=false"
+      - "-v=true"
       - "-p=9586"
       - "-s=false"
       - "-r=false"
