@@ -36,7 +36,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=HostRegexp(`^traefik\.(local|lan)$`)"
+      - "traefik.http.routers.admin.rule=HostRegexp('^traefik\.(local|lan)$')"
       - "traefik.http.routers.admin.entrypoints=web"
       - "traefik.http.services.admin.loadbalancer.server.port=8080"
     restart: unless-stopped
@@ -52,7 +52,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.heimdall.rule=HostRegexp(`^heimdall\.(local|lan)$`)"
+      - "traefik.http.routers.heimdall.rule=HostRegexp('^heimdall\.(local|lan)$')"
       - "traefik.http.routers.heimdall.entrypoints=web"
       - "traefik.http.services.heimdall.loadbalancer.server.port=80"
     restart: unless-stopped
@@ -70,7 +70,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sonarr.rule=HostRegexp(`^sonarr\.(local|lan)$`)"
+      - "traefik.http.routers.sonarr.rule=HostRegexp('^sonarr\.(local|lan)$')"
       - "traefik.http.routers.sonarr.entrypoints=web"
       - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
     restart: unless-stopped
@@ -88,7 +88,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.radarr.rule=HostRegexp(`^radarr\.(local|lan)$`)"
+      - "traefik.http.routers.radarr.rule=HostRegexp('^radarr\.(local|lan)$')"
       - "traefik.http.routers.radarr.entrypoints=web"
       - "traefik.http.services.radarr.loadbalancer.server.port=7878"
     restart: unless-stopped
@@ -104,7 +104,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.prowlarr.rule=HostRegexp(`^prowlarr\.(local|lan)$`)"
+      - "traefik.http.routers.prowlarr.rule=HostRegexp('^prowlarr\.(local|lan)$')"
       - "traefik.http.routers.prowlarr.entrypoints=web"
       - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
     restart: unless-stopped
@@ -126,7 +126,7 @@ services:
       PUID: 1000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.transmission.rule=HostRegexp(`^transmission\.(local|lan)$`)"
+      - "traefik.http.routers.transmission.rule=HostRegexp('^transmission\.(local|lan)$')"
       - "traefik.http.routers.transmission.entrypoints=web"
       - "traefik.http.services.transmission.loadbalancer.server.port=9091"
     restart: unless-stopped
@@ -162,7 +162,7 @@ services:
       CRASHPLAN_SRV_MAX_MEM: 3072M
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.crashplan.rule=HostRegexp(`^crashplan\.(local|lan)$`)"
+      - "traefik.http.routers.crashplan.rule=HostRegexp('^crashplan\.(local|lan)$')"
       - "traefik.http.routers.crashplan.entrypoints=web"
       - "traefik.http.services.crashplan.loadbalancer.server.port=5800"
     restart: unless-stopped
@@ -187,7 +187,7 @@ services:
     restart: unless-stopped
     labels:
        - "traefik.enable=true"
-       - "traefik.http.routers.pihole.rule=HostRegexp(`^pihole\.(local|lan)$`)"
+       - "traefik.http.routers.pihole.rule=HostRegexp('^pihole\.(local|lan)$')"
        - "traefik.http.routers.pihole.entrypoints=web"
        - "traefik.http.services.pihole.loadbalancer.server.port=80"
 
@@ -205,7 +205,7 @@ services:
       OOKLA_EULA_GDPR: 'true'
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.speed.rule=HostRegexp(`^speed\.(local|lan)$`)"
+      - "traefik.http.routers.speed.rule=HostRegexp('^speed\.(local|lan)$')"
       - "traefik.http.routers.speed.entrypoints=web"
       - "traefik.http.services.speed.loadbalancer.server.port=80"
     restart: unless-stopped
@@ -220,7 +220,7 @@ services:
       - "9090:9090"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.prometheus.rule=HostRegexp(`^prometheus\.(local|lan)$`)"
+      - "traefik.http.routers.prometheus.rule=HostRegexp('^prometheus\.(local|lan)$')"
       - "traefik.http.routers.prometheus.entrypoints=web"
       - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
     restart: unless-stopped
@@ -234,7 +234,7 @@ services:
       - ${CONTAINERS_CONFIG_PATH}/grafana:/var/lib/grafana
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.grafana.rule=HostRegexp(`^grafana\.(local|lan)$`)"
+      - "traefik.http.routers.grafana.rule=HostRegexp('^grafana\.(local|lan)$')"
       - "traefik.http.routers.grafana.entrypoints=web"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
     restart: unless-stopped
@@ -260,7 +260,7 @@ services:
       - NET_ADMIN
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wireguard.rule=HostRegexp(`^wireguard\.(local|lan)$`)"
+      - "traefik.http.routers.wireguard.rule=HostRegexp('^wireguard\.(local|lan)$')"
       - "traefik.http.routers.wireguard.entrypoints=web"
       - "traefik.http.services.wireguard.loadbalancer.server.port=9586"
     restart: unless-stopped
