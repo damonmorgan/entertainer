@@ -27,7 +27,7 @@ services:
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.defaultRule=HostRegexp(`^{{ index .Labels \"com.docker.compose.service\" }}\.(local|lan)$`)"
+      - "--providers.docker.defaultRule=HostRegexp(`^{{ index .Labels \"com.docker.compose.service\" }}{0,5}"
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
