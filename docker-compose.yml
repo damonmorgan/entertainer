@@ -4,18 +4,14 @@ services:
 
 #mdns
   mdns:
-    container_name: mdns
-    image: damonmorgan/traefik-mdns
-    environment:
-      SERVER_HOST_NAME: 'entertainer'
-      SERVER_DOMAIN_NAME: 'local'
-      NETWORK_INTERFACE: 'enp2s0'
-    volumes:
-      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/dbus-1/system.d:/system-dbus
+    container_name: docker-mdns
+    image: ghcr.io/phyber/docker-mdns:aarch64-latest
     network_mode: "host"
-    privileged: true
+    command:
+      - "enp2s0"
+    volumes:
+      - "/var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
     restart: unless-stopped
 
 #Reverse Proxy
@@ -36,8 +32,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
+      - "docker-mdns.enable=true"
+      - "docker-mdns.host=traefik.local"
       - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=HostRegexp(`^traefik\\.(local|lan)$`)"
       - "traefik.http.routers.admin.entrypoints=web"
       - "traefik.http.services.admin.loadbalancer.server.port=8080"
     restart: unless-stopped
@@ -52,8 +49,9 @@ services:
       PGID: 1000
       PUID: 1000
     labels:
+      - "docker-mdns.enable=true"
+      - "docker-mdns.host=heimdall.local"
       - "traefik.enable=true"
-      #- "traefik.http.routers.heimdall.rule=Host(`heimdall.local`)"
       - "traefik.http.routers.heimdall.entrypoints=web"
       - "traefik.http.services.heimdall.loadbalancer.server.port=80"
     restart: unless-stopped
