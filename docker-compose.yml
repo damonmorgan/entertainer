@@ -5,7 +5,7 @@ services:
 #mdns
   mdns:
     container_name: docker-mdns
-    image: ghcr.io/phyber/docker-mdns:arm64-latest
+    image: ghcr.io/phyber/docker-mdns:amd64-latest
     network_mode: "host"
     command:
       - "enp2s0"
