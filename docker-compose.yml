@@ -36,7 +36,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=Host(`traefik.local`) || Host(`traefik.lan`)"
+      - "traefik.http.routers.admin.rule=HostRegexp(`^traefik\\.(local|lan)$`)"
       - "traefik.http.routers.admin.entrypoints=web"
       - "traefik.http.services.admin.loadbalancer.server.port=8080"
     restart: unless-stopped
