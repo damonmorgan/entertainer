@@ -207,7 +207,6 @@ services:
     labels:
       - "mdns.host=speed.local"
       - "traefik.enable=true"
-      - "traefik.http.routers.speed.rule=Host(`speed.local`)"
       - "traefik.http.routers.speed.entrypoints=web"
       - "traefik.http.services.speed.loadbalancer.server.port=80"
     restart: unless-stopped
