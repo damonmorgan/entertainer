@@ -23,11 +23,11 @@ services:
     container_name: traefik
     image: traefik
     command:
-      - "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.defaultRule=HostRegexp(`^{{ .ContainerName }}\\.(local|lan)$`)"
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
