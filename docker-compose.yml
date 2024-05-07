@@ -23,6 +23,7 @@ services:
     container_name: traefik
     image: traefik
     command:
+      - "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--api.dashboard=true"
       - "--providers.docker=true"
