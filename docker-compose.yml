@@ -27,7 +27,7 @@ services:
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.defaultRule=HostRegexp(`^{{ .ContainerName }}.*&`)"
+      - "--providers.docker.defaultRule=HostRegexp(`^{{ .ContainerName }}.*$`)"
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
