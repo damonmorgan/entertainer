@@ -27,7 +27,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ${CONTAINERS_CONFIG_PATH}/cloudflare/:/
+      - ${CONTAINERS_CONFIG_PATH}/cloudflare/config.json:/config.json
     restart: unless-stopped
 
 #Reverse Proxy
