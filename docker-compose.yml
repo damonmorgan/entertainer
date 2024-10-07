@@ -122,6 +122,22 @@ services:
       - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
     restart: unless-stopped
 
+# Cloudflare Captcha Solver
+flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=Europe/London
+    labels:
+      - "mdns.host=flaresolverr.local"
+      - "traefik.enable=true"
+      - "traefik.http.routers.flaresolverr.entrypoints=web"
+      - "traefik.http.services.flaresolverr.loadbalancer.server.port=8191"
+    restart: unless-stopped
+
 # Torrent Downloader
   transmission:
     container_name: transmission
