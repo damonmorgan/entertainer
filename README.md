@@ -15,6 +15,7 @@ cat <<EOT >> .env
 CONTAINERS_CONFIG_PATH=$(pwd)
 TV_DESTINATION_PATH=/media/storage/entertainment/tv
 MOVIE_DESTINATION_PATH=/media/storage/entertainment/movies
+BOOK_DESTINATION_PATH=/media/storage/entertainment/books
 PROCESSING_PATH=$(pwd)
 BACKUP_PATH=/media/storage
 PGID=$(id -g $USER)
@@ -29,6 +30,7 @@ cat <<EOT >> .env
 CONTAINERS_CONFIG_PATH=/media/wdred-alpha/entertainer-config
 TV_DESTINATION_PATH=/media/wdred-bravo/Entertainment/TV
 MOVIE_DESTINATION_PATH=/media/wdred-charlie/Entertainment/HD-Movies-Downloaded
+BOOK_DESTINATION_PATH=/media/wdred-charlie/Entertainment/Books
 PROCESSING_PATH=/home/damon/entertainer
 BACKUP_PATH=/media
 PGID=1000
