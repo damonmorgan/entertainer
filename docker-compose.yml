@@ -121,7 +121,7 @@ services:
       - "mdns.host=readarr.local"
       - "traefik.enable=true"
       - "traefik.http.routers.readarr.entrypoints=web"
-      - "traefik.http.services.readarr.loadbalancer.server.port=7878"
+      - "traefik.http.services.readarr.loadbalancer.server.port=8787"
     restart: unless-stopped
 
 # Torrent Proxy
