@@ -236,11 +236,13 @@ services:
       DISPLAY_TIMEZONE: 'Europe/London'
       PUBLIC_DASHBOARD: 'true'
       PRUNE_RESULTS_OLDER_THAN: '30'
+     ports:
+      - "8080:9092"
     labels:
       - "mdns.host=speed.local"
       - "traefik.enable=true"
       - "traefik.http.routers.speed.entrypoints=web"
-      - "traefik.http.services.speed.loadbalancer.server.port=8080"
+      - "traefik.http.services.speed.loadbalancer.server.port=9092"
     restart: unless-stopped
 
 # Prometheus
