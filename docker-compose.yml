@@ -226,8 +226,6 @@ services:
     image: lscr.io/linuxserver/speedtest-tracker:latest
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/speedtest:/config
-    ports:
-      - "8080:80"
     environment:
       PGID: 1000
       PUID: 1000
