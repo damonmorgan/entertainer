@@ -70,6 +70,21 @@ services:
       - "traefik.http.services.heimdall.loadbalancer.server.port=80"
     restart: unless-stopped
 
+  homarr:
+    container_name: homarr
+    image: ghcr.io/homarr-labs/homarr:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - ${CONTAINERS_CONFIG_PATH}/homarr/appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=41aede8f81225605e2a10dc63988c6d7f575dd24d953df1db567973f6f5a2259
+    labels:
+      - "mdns.host=homarr.local"
+      - "traefik.enable=true"
+      - "traefik.http.routers.homarr.entrypoints=web"
+      - "traefik.http.services.homarr.loadbalancer.server.port=7575"
+    restart: unless-stopped
+
 # TV
   sonarr:
     container_name: sonarr
@@ -78,8 +93,6 @@ services:
       - ${CONTAINERS_CONFIG_PATH}/sonarr:/config
       - ${TV_DESTINATION_PATH}:/tv
       - ${PROCESSING_PATH}/downloads:/downloads
-    ports:
-      - "8989:8989"
     environment:
       PGID: 1000
       PUID: 1000
@@ -98,8 +111,6 @@ services:
       - ${CONTAINERS_CONFIG_PATH}/radarr:/config
       - ${MOVIE_DESTINATION_PATH}:/movies
       - ${PROCESSING_PATH}/downloads:/downloads
-    ports:
-      - "7878:7878"
     environment:
       PGID: 1000
       PUID: 1000
