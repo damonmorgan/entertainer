@@ -57,12 +57,14 @@ services:
 # HTPC Portal
   heimdall:
     container_name: heimdall
-    image: linuxserver/heimdall
+    image: lscr.io/linuxserver/heimdall:latest
     volumes:
       - ${CONTAINERS_CONFIG_PATH}/heimdall:/config
     environment:
       PGID: 1000
       PUID: 1000
+      TZ: 'Europe/London'
+      ALLOW_INTERNAL_REQUESTS: 'true'
     labels:
       - "mdns.host=heimdall.local"
       - "traefik.enable=true"
